@@ -1,4 +1,4 @@
-package io.github.fatimazza.academyapp.detail
+package io.github.fatimazza.academyapp.ui.detail
 
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar

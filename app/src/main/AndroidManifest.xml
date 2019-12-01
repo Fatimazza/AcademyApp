@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".detail.DetailCourseActivity"
+            android:name="io.github.fatimazza.academyapp.ui.detail.DetailCourseActivity"
             android:label="@string/title_activity_detail_course"
             android:parentActivityName="io.github.fatimazza.academyapp.ui.home.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
