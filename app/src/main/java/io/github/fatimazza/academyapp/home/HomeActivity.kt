@@ -1,10 +1,11 @@
-package io.github.fatimazza.academyapp
+package io.github.fatimazza.academyapp.home
 
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import io.github.fatimazza.academyapp.R
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {

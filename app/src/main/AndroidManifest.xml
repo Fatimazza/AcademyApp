@@ -12,14 +12,14 @@
         <activity
             android:name=".detail.DetailCourseActivity"
             android:label="@string/title_activity_detail_course"
-            android:parentActivityName=".HomeActivity"
+            android:parentActivityName=".home.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="io.github.fatimazza.academyapp.HomeActivity" />
+                android:value="io.github.fatimazza.academyapp.home.HomeActivity" />
         </activity>
         <activity android:name=".CourseReaderActivity" />
-        <activity android:name=".HomeActivity">
+        <activity android:name=".home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
