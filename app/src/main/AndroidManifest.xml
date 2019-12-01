@@ -9,6 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".DetailCourseActivity"
+            android:label="@string/title_activity_detail_course"
+            android:parentActivityName=".HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="io.github.fatimazza.academyapp.HomeActivity" />
+        </activity>
         <activity android:name=".CourseReaderActivity" />
         <activity android:name=".HomeActivity">
             <intent-filter>
