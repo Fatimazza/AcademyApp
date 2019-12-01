@@ -18,7 +18,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="io.github.fatimazza.academyapp.home.HomeActivity" />
         </activity>
-        <activity android:name=".CourseReaderActivity" />
+        <activity android:name=".reader.CourseReaderActivity" />
         <activity android:name=".home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

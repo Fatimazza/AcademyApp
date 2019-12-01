@@ -1,7 +1,8 @@
-package io.github.fatimazza.academyapp
+package io.github.fatimazza.academyapp.reader
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import io.github.fatimazza.academyapp.R
 
 class CourseReaderActivity : AppCompatActivity() {
 
