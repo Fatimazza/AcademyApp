@@ -1,4 +1,4 @@
-package io.github.fatimazza.academyapp.home
+package io.github.fatimazza.academyapp.ui.home
 
 import android.os.Bundle
 import android.view.MenuItem
