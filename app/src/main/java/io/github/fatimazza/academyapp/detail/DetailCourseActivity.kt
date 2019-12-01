@@ -1,8 +1,9 @@
-package io.github.fatimazza.academyapp
+package io.github.fatimazza.academyapp.detail
 
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
+import io.github.fatimazza.academyapp.R
 
 import kotlinx.android.synthetic.main.activity_detail_course.*
 
