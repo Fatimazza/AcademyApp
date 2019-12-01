@@ -1,4 +1,4 @@
-package io.github.fatimazza.academyapp.reader.list
+package io.github.fatimazza.academyapp.ui.reader.content
 
 
 import android.os.Bundle
@@ -9,14 +9,14 @@ import android.view.ViewGroup
 
 import io.github.fatimazza.academyapp.R
 
-class ModuleListFragment : Fragment() {
+class ModuleContentFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_module_list, container, false)
+        return inflater.inflate(R.layout.fragment_module_content, container, false)
     }
-    
+
 }

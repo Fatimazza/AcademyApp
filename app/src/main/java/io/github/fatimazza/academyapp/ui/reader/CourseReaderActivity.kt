@@ -1,4 +1,4 @@
-package io.github.fatimazza.academyapp.reader
+package io.github.fatimazza.academyapp.ui.reader
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
