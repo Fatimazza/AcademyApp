@@ -1,4 +1,4 @@
-package io.github.fatimazza.academyapp.bookmark
+package io.github.fatimazza.academyapp.ui.bookmark
 
 
 import android.os.Bundle
