@@ -1,4 +1,4 @@
-package io.github.fatimazza.academyapp.academy
+package io.github.fatimazza.academyapp.ui.academy
 
 
 import android.os.Bundle
