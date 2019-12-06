@@ -8,8 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 
 import io.github.fatimazza.academyapp.R
+import io.github.fatimazza.academyapp.data.CourseEntity
 
-class BookmarkFragment : Fragment() {
+class BookmarkFragment : Fragment(), BookmarkFragmentCallback {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -17,6 +18,10 @@ class BookmarkFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_bookmark, container, false)
+    }
+
+    override fun onShareClick(course: CourseEntity) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 }
