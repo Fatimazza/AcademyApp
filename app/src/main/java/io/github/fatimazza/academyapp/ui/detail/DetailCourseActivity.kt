@@ -1,5 +1,6 @@
 package io.github.fatimazza.academyapp.ui.detail
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
@@ -11,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import io.github.fatimazza.academyapp.R
 import io.github.fatimazza.academyapp.data.CourseEntity
+import io.github.fatimazza.academyapp.ui.reader.CourseReaderActivity
 import io.github.fatimazza.academyapp.utils.DataDummy
 
 import kotlinx.android.synthetic.main.activity_detail_course.*
@@ -93,5 +95,11 @@ class DetailCourseActivity : AppCompatActivity() {
                 .placeholder(R.drawable.ic_loading)
                 .error(R.drawable.ic_error))
             .into(ivModulePoster)
+
+        btnModuleStart.setOnClickListener {
+            val courseReaderIntent = Intent(this, CourseReaderActivity::class.java)
+            courseReaderIntent.putExtra(CourseReaderActivity.EXTRA_COURSE_ID, courseId)
+            startActivity(courseReaderIntent)
+        }
     }
 }
