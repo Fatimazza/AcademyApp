@@ -149,7 +149,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/line2"
-        tools:listitem="@layout/item_module_list" />
+        tools:listitem="@layout/item_list_module" />
 
     <ProgressBar
         android:id="@+id/pb_detail_module"
