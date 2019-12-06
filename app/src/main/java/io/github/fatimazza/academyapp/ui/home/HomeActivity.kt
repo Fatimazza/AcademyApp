@@ -31,16 +31,12 @@ class HomeActivity : AppCompatActivity() {
         object : BottomNavigationView.OnNavigationItemSelectedListener {
             override fun onNavigationItemSelected(item: MenuItem): Boolean {
                 when (item.itemId) {
-                    R.id.navigation_home -> {
+                    R.id.action_home -> {
                         tvMessage.setText(R.string.title_home)
                         return true
                     }
-                    R.id.navigation_dashboard -> {
+                    R.id.action_bookmark -> {
                         tvMessage.setText(R.string.title_dashboard)
-                        return true
-                    }
-                    R.id.navigation_notifications -> {
-                        tvMessage.setText(R.string.title_notifications)
                         return true
                     }
                 }
