@@ -10,9 +10,6 @@ import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
 
-    private val tvMessage: TextView
-        get() = tv_message
-
     private val navView: BottomNavigationView
         get() = nav_view
 
@@ -32,11 +29,9 @@ class HomeActivity : AppCompatActivity() {
             override fun onNavigationItemSelected(item: MenuItem): Boolean {
                 when (item.itemId) {
                     R.id.action_home -> {
-                        tvMessage.setText(R.string.title_home)
                         return true
                     }
                     R.id.action_bookmark -> {
-                        tvMessage.setText(R.string.title_dashboard)
                         return true
                     }
                 }
