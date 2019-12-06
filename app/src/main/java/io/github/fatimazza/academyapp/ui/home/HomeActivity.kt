@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import io.github.fatimazza.academyapp.R
 import io.github.fatimazza.academyapp.ui.academy.AcademyFragment
+import io.github.fatimazza.academyapp.ui.bookmark.BookmarkFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
@@ -36,6 +37,7 @@ class HomeActivity : AppCompatActivity() {
                         return true
                     }
                     R.id.action_bookmark -> {
+                        loadFragment(BookmarkFragment())
                         return true
                     }
                 }
