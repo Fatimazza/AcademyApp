@@ -6,5 +6,5 @@ data class CourseEntity (
     val description: String = "",
     val deadline: String = "",
     val bookmarked: Boolean? = false,
-    val imagePath: String? = ""
+    val imagePath: String = ""
 )
