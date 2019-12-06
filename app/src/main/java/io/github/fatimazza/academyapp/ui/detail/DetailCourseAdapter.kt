@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import io.github.fatimazza.academyapp.R
 import io.github.fatimazza.academyapp.data.ModuleEntity
+import kotlinx.android.synthetic.main.item_list_module.view.*
 
 class DetailCourseAdapter: RecyclerView.Adapter<DetailCourseAdapter.DetailCourseViewHolder>() {
 
@@ -29,7 +30,9 @@ class DetailCourseAdapter: RecyclerView.Adapter<DetailCourseAdapter.DetailCourse
         : RecyclerView.ViewHolder(view) {
 
         fun bind(module: ModuleEntity, position: Int) {
-            
+            with(view) {
+                tv_item_module_title.text = module.title
+            }
         }
     }
 }
