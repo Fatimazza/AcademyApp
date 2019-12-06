@@ -1,5 +1,7 @@
 package io.github.fatimazza.academyapp.ui.academy
 
+import android.app.Activity
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +11,10 @@ import com.bumptech.glide.request.RequestOptions
 import io.github.fatimazza.academyapp.R
 import io.github.fatimazza.academyapp.data.CourseEntity
 import io.github.fatimazza.academyapp.ui.academy.AcademyAdapter.AcademyViewHolder
+import io.github.fatimazza.academyapp.ui.detail.DetailCourseActivity
 import kotlinx.android.synthetic.main.item_list_academy.view.*
 
-class AcademyAdapter(val listCourse: ArrayList<CourseEntity>): RecyclerView.Adapter<AcademyViewHolder>() {
+class AcademyAdapter(val listCourse: ArrayList<CourseEntity>, val activity: Activity): RecyclerView.Adapter<AcademyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AcademyViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -35,7 +38,9 @@ class AcademyAdapter(val listCourse: ArrayList<CourseEntity>): RecyclerView.Adap
                 tv_course_description.text = course.description
                 tv_course_date.text = String.format("Deadline %s", course.deadline)
                 setOnClickListener {
-
+                    val detailCourseIntent = Intent(activity, DetailCourseActivity::class.java)
+                    detailCourseIntent.putExtra(DetailCourseActivity.EXTRA_COURSE, course.courseId)
+                    activity.startActivity(detailCourseIntent)
                 }
 
                 Glide.with(this.context)
