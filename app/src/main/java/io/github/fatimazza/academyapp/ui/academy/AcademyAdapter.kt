@@ -14,7 +14,9 @@ import io.github.fatimazza.academyapp.ui.academy.AcademyAdapter.AcademyViewHolde
 import io.github.fatimazza.academyapp.ui.detail.DetailCourseActivity
 import kotlinx.android.synthetic.main.item_list_academy.view.*
 
-class AcademyAdapter(val listCourse: ArrayList<CourseEntity>, val activity: Activity): RecyclerView.Adapter<AcademyViewHolder>() {
+class AcademyAdapter(val activity: Activity): RecyclerView.Adapter<AcademyViewHolder>() {
+
+    private var listCourse = arrayListOf<CourseEntity>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AcademyViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -28,6 +30,13 @@ class AcademyAdapter(val listCourse: ArrayList<CourseEntity>, val activity: Acti
 
     override fun onBindViewHolder(holder: AcademyViewHolder, position: Int) {
         holder.bind(listCourse[position], position)
+    }
+
+    fun getData(): List<CourseEntity> = listCourse
+
+    fun setData(courseItems: List<CourseEntity>) {
+        listCourse.clear()
+        listCourse.addAll(courseItems)
     }
 
     inner class AcademyViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
