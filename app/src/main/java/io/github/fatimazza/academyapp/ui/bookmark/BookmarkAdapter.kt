@@ -13,7 +13,8 @@ import io.github.fatimazza.academyapp.data.CourseEntity
 import io.github.fatimazza.academyapp.ui.detail.DetailCourseActivity
 import kotlinx.android.synthetic.main.item_list_bookmark.view.*
 
-class BookmarkAdapter(val activity: Activity) : RecyclerView.Adapter<BookmarkAdapter.BookmarkViewHolder>() {
+class BookmarkAdapter(val activity: Activity, val bookmarkCallback: BookmarkFragmentCallback)
+    : RecyclerView.Adapter<BookmarkAdapter.BookmarkViewHolder>() {
 
     private var listCourse = arrayListOf<CourseEntity>()
 
@@ -51,7 +52,7 @@ class BookmarkAdapter(val activity: Activity) : RecyclerView.Adapter<BookmarkAda
                     activity.startActivity(detailCourseIntent)
                 }
                 iv_bookmark_share.setOnClickListener {
-
+                    bookmarkCallback.onShareClick(course)
                 }
 
                 Glide.with(this.context)
