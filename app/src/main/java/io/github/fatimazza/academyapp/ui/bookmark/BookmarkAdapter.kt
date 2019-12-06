@@ -1,5 +1,7 @@
 package io.github.fatimazza.academyapp.ui.bookmark
 
+import android.app.Activity
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,9 +10,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import io.github.fatimazza.academyapp.R
 import io.github.fatimazza.academyapp.data.CourseEntity
+import io.github.fatimazza.academyapp.ui.detail.DetailCourseActivity
 import kotlinx.android.synthetic.main.item_list_bookmark.view.*
 
-class BookmarkAdapter : RecyclerView.Adapter<BookmarkAdapter.BookmarkViewHolder>() {
+class BookmarkAdapter(val activity: Activity) : RecyclerView.Adapter<BookmarkAdapter.BookmarkViewHolder>() {
 
     private var listCourse = arrayListOf<CourseEntity>()
 
@@ -43,7 +46,9 @@ class BookmarkAdapter : RecyclerView.Adapter<BookmarkAdapter.BookmarkViewHolder>
                 tv_bookmark_date.text = course.deadline
                 tv_bookmark_description.text = course.description
                 setOnClickListener {
-
+                    val detailCourseIntent = Intent(activity, DetailCourseActivity::class.java)
+                    detailCourseIntent.putExtra(DetailCourseActivity.EXTRA_COURSE, course.courseId)
+                    activity.startActivity(detailCourseIntent)
                 }
                 iv_bookmark_share.setOnClickListener {
 
