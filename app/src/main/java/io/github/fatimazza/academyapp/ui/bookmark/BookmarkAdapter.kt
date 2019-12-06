@@ -28,6 +28,13 @@ class BookmarkAdapter : RecyclerView.Adapter<BookmarkAdapter.BookmarkViewHolder>
         holder.bind(listCourse[position], position)
     }
 
+    fun getData(): List<CourseEntity> = listCourse
+
+    fun setData(courseItems: List<CourseEntity>) {
+        listCourse.clear()
+        listCourse.addAll(courseItems)
+    }
+
     inner class BookmarkViewHolder(private val view:View): RecyclerView.ViewHolder(view) {
 
         fun bind(course: CourseEntity, position: Int) {
