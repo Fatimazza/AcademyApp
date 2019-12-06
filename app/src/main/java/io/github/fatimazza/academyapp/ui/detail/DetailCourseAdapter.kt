@@ -26,6 +26,11 @@ class DetailCourseAdapter: RecyclerView.Adapter<DetailCourseAdapter.DetailCourse
         holder.bind(listModule[position], position)
     }
 
+    fun setData(courseItems: List<ModuleEntity>) {
+        listModule.clear()
+        listModule.addAll(courseItems)
+    }
+
     inner class DetailCourseViewHolder(private val view: View)
         : RecyclerView.ViewHolder(view) {
 
