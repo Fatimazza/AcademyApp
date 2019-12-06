@@ -1,6 +1,9 @@
 package io.github.fatimazza.academyapp.ui.detail
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +17,21 @@ class DetailCourseActivity : AppCompatActivity() {
 
     private val rvListModule: RecyclerView
         get() = rv_detail_list_module
+
+    private val tvModuleTitle: TextView
+        get() = tv_detail_title
+
+    private val tvModuleDeadline: TextView
+        get() = tv_detail_date
+
+    private val tvModuleDesc: TextView
+        get() = tv_detail_description
+
+    private val ivModulePoster: ImageView
+        get() = iv_detail_image_poster
+
+    private val btnModuleStart: Button
+        get() = btn_detail_start
 
     companion object {
         const val EXTRA_COURSE = "extra_course"
