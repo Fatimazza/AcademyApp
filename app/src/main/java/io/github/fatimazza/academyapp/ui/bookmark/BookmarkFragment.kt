@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ShareCompat
 
 import io.github.fatimazza.academyapp.R
 import io.github.fatimazza.academyapp.data.CourseEntity
@@ -21,7 +22,13 @@ class BookmarkFragment : Fragment(), BookmarkFragmentCallback {
     }
 
     override fun onShareClick(course: CourseEntity) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val mimeType = "text/plain"
+        ShareCompat.IntentBuilder
+            .from(requireActivity())
+            .setType(mimeType)
+            .setChooserTitle("Bagikan aplikasi ini sekarang")
+            .setText(String.format("Segera daftar kelas %s di dicoding.com", course.title))
+            .startChooser()
     }
 
 }
