@@ -7,9 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
+import android.webkit.WebView
+import android.widget.ProgressBar
 import io.github.fatimazza.academyapp.R
 
 class ModuleContentFragment : Fragment() {
+
+    private val webModuleContent: WebView
+        get() = web_module_content
+
+    private val pbModuleContent: ProgressBar
+        get() = pb_module_content
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
