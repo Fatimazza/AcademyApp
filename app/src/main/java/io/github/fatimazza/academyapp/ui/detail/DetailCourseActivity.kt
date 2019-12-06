@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -81,6 +82,10 @@ class DetailCourseActivity : AppCompatActivity() {
         rvListModule.layoutManager = LinearLayoutManager(this)
         rvListModule.setHasFixedSize(true)
         rvListModule.adapter = detailCourseAdapter
+
+        val dividerItemDecoration = DividerItemDecoration(
+            rvListModule.context, DividerItemDecoration.VERTICAL)
+        rvListModule.addItemDecoration(dividerItemDecoration)
     }
 
     private fun populateCourse(courseId: String) {
