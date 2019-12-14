@@ -12,6 +12,12 @@ class ModuleListAdapter: RecyclerView.Adapter<ModuleListAdapter.ModuleListViewHo
 
     private var listModule = arrayListOf<ModuleEntity>()
 
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(listener: OnItemClickCallback) {
+        this.onItemClickCallback = listener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ModuleListViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_list_module_custom, parent, false)
@@ -29,6 +35,9 @@ class ModuleListAdapter: RecyclerView.Adapter<ModuleListAdapter.ModuleListViewHo
 
     override fun onBindViewHolder(holder: ModuleListViewHolder, position: Int) {
         holder.bind(listModule[position])
+        holder.itemView.setOnClickListener {
+            onItemClickCallback.onItemClicked(holder.adapterPosition, listModule[position].moduleId)
+        }
     }
 
     inner class ModuleListViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
@@ -38,5 +47,9 @@ class ModuleListAdapter: RecyclerView.Adapter<ModuleListAdapter.ModuleListViewHo
                 tv_item_module_title.text = module.title
             }
         }
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(position: Int, moduleId: String)
     }
 }
