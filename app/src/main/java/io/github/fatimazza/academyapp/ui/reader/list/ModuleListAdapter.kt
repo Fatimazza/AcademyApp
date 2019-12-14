@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import io.github.fatimazza.academyapp.R
 import io.github.fatimazza.academyapp.data.ModuleEntity
+import kotlinx.android.synthetic.main.item_list_module_custom.view.*
 
 class ModuleListAdapter: RecyclerView.Adapter<ModuleListAdapter.ModuleListViewHolder>() {
 
@@ -28,7 +29,9 @@ class ModuleListAdapter: RecyclerView.Adapter<ModuleListAdapter.ModuleListViewHo
     inner class ModuleListViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
 
         fun bind(module: ModuleEntity) {
-            
+            with(view) {
+                tv_item_module_title.text = module.title
+            }
         }
     }
 }
