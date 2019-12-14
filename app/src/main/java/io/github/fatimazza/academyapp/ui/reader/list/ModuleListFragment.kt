@@ -10,6 +10,11 @@ import android.widget.ProgressBar
 import androidx.recyclerview.widget.RecyclerView
 
 import io.github.fatimazza.academyapp.R
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+
+import io.github.fatimazza.academyapp.data.ModuleEntity
+import io.github.fatimazza.academyapp.utils.DataDummy
 import kotlinx.android.synthetic.main.fragment_module_list.*
 
 class ModuleListFragment : Fragment() {
@@ -19,7 +24,9 @@ class ModuleListFragment : Fragment() {
 
     private val rvModuleList: RecyclerView
         get() = rv_module_list
-    
+
+    private lateinit var moduleListAdapter: ModuleListAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,5 +34,22 @@ class ModuleListFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_module_list, container, false)
     }
-    
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        moduleListAdapter = ModuleListAdapter()
+        populateRecyclerView(DataDummy.generateDummyModules("a14"))
+    }
+
+    private fun populateRecyclerView(modules: ArrayList<ModuleEntity>) {
+        progressModuleList.visibility = View.GONE
+        moduleListAdapter.setData(modules)
+
+        rvModuleList.layoutManager = LinearLayoutManager(requireContext())
+        rvModuleList.setHasFixedSize(true)
+        rvModuleList.adapter = moduleListAdapter
+
+        val dividerItemDecoration = DividerItemDecoration(rvModuleList.context, DividerItemDecoration.VERTICAL)
+        rvModuleList.addItemDecoration(dividerItemDecoration)
+    }
 }
