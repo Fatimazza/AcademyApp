@@ -22,6 +22,11 @@ class ModuleListAdapter: RecyclerView.Adapter<ModuleListAdapter.ModuleListViewHo
         return listModule.size
     }
 
+    fun setData(moduleItems: List<ModuleEntity>) {
+        listModule.clear()
+        listModule.addAll(moduleItems)
+    }
+
     override fun onBindViewHolder(holder: ModuleListViewHolder, position: Int) {
         holder.bind(listModule[position])
     }
