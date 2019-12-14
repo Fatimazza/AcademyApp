@@ -23,7 +23,7 @@ class DetailCourseAdapter: RecyclerView.Adapter<DetailCourseAdapter.DetailCourse
     }
 
     override fun onBindViewHolder(holder: DetailCourseViewHolder, position: Int) {
-        holder.bind(listModule[position], position)
+        holder.bind(listModule[position])
     }
 
     fun setData(courseItems: List<ModuleEntity>) {
@@ -34,7 +34,7 @@ class DetailCourseAdapter: RecyclerView.Adapter<DetailCourseAdapter.DetailCourse
     inner class DetailCourseViewHolder(private val view: View)
         : RecyclerView.ViewHolder(view) {
 
-        fun bind(module: ModuleEntity, position: Int) {
+        fun bind(module: ModuleEntity) {
             with(view) {
                 tv_item_module_title.text = module.title
             }
