@@ -29,7 +29,7 @@ class AcademyAdapter(val activity: Activity): RecyclerView.Adapter<AcademyViewHo
     }
 
     override fun onBindViewHolder(holder: AcademyViewHolder, position: Int) {
-        holder.bind(listCourse[position], position)
+        holder.bind(listCourse[position])
     }
 
     fun getData(): List<CourseEntity> = listCourse
@@ -41,7 +41,7 @@ class AcademyAdapter(val activity: Activity): RecyclerView.Adapter<AcademyViewHo
 
     inner class AcademyViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
 
-        fun bind(course: CourseEntity, position: Int) {
+        fun bind(course: CourseEntity) {
             with(view) {
                 tv_course_title.text = course.title
                 tv_course_description.text = course.description
