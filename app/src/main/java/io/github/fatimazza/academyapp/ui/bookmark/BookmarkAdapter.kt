@@ -29,7 +29,7 @@ class BookmarkAdapter(val activity: Activity, val bookmarkCallback: BookmarkFrag
     }
 
     override fun onBindViewHolder(holder: BookmarkViewHolder, position: Int) {
-        holder.bind(listCourse[position], position)
+        holder.bind(listCourse[position])
     }
 
     fun getData(): List<CourseEntity> = listCourse
@@ -41,7 +41,7 @@ class BookmarkAdapter(val activity: Activity, val bookmarkCallback: BookmarkFrag
 
     inner class BookmarkViewHolder(private val view:View): RecyclerView.ViewHolder(view) {
 
-        fun bind(course: CourseEntity, position: Int) {
+        fun bind(course: CourseEntity) {
             with(view) {
                 tv_bookmark_title.text = course.title
                 tv_bookmark_date.text = course.deadline
