@@ -1,7 +1,7 @@
 package io.github.fatimazza.academyapp.data
 
 data class ModuleEntity (
-    val contentEntity: ContentEntity? = null,
+    var contentEntity: ContentEntity? = null,
     val moduleId: String = "",
     val courseId: String = "",
     val title: String = "",
