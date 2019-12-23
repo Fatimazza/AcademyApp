@@ -90,9 +90,9 @@ class DetailCourseActivity : AppCompatActivity() {
 
     private fun populateCourse(courseId: String) {
         val courseEntity: CourseEntity = DataDummy.getCourse(courseId) as CourseEntity
-        tvModuleTitle.text = ""
-        tvModuleDeadline.text = ""
-        tvModuleDesc.text = ""
+        tvModuleTitle.text = courseEntity.title
+        tvModuleDeadline.text = String.format("Deadline %s", courseEntity.deadline)
+        tvModuleDesc.text = courseEntity.description
 
         Glide.with(this)
             .load(courseEntity.imagePath)
