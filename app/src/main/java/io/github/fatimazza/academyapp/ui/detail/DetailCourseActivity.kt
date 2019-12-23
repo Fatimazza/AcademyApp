@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -45,22 +46,30 @@ class DetailCourseActivity : AppCompatActivity() {
 
     private lateinit var detailCourseAdapter: DetailCourseAdapter
 
+    private lateinit var detailCourseViewModel: DetailCourseViewModel
+
     private var courseId = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_course)
 
+        initViewModel()
         setupActionBar()
         getIntentExtras()
         setupAdapter()
         showListModule()
     }
 
+    private fun initViewModel() {
+        detailCourseViewModel = ViewModelProviders.of(this).get(DetailCourseViewModel::class.java)
+    }
+
     private fun getIntentExtras() {
         val extras = intent.extras
         extras?.let {
             courseId = it.getString(EXTRA_COURSE) ?: ""
+            detailCourseViewModel.courseId = courseId
         }
     }
 
@@ -72,9 +81,9 @@ class DetailCourseActivity : AppCompatActivity() {
     private fun setupAdapter() {
         detailCourseAdapter = DetailCourseAdapter()
 
-        if (courseId.isNotEmpty()) {
-            detailCourseAdapter.setData(DataDummy.generateDummyModules(courseId))
-            populateCourse(courseId)
+        if (detailCourseViewModel.courseId.isNotEmpty()) {
+            detailCourseAdapter.setData(detailCourseViewModel.getModules())
+            populateCourse(detailCourseViewModel.courseId)
         }
     }
 
