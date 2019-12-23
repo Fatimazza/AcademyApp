@@ -15,6 +15,21 @@ class CourseReaderActivity : AppCompatActivity(), CourseReaderCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_course_reader)
+        getIntentExtra()
+    }
+
+    private fun getIntentExtra() {
+        val bundle = intent.extras
+        if (bundle != null) {
+            val courseId = bundle.getString(EXTRA_COURSE_ID)
+            if (courseId != null) {
+                populateFragment()
+            }
+        }
+    }
+
+    private fun populateFragment() {
+        
     }
 
     override fun moveTo(position: Int, moduleId: String) {
