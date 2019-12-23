@@ -3,6 +3,7 @@ package io.github.fatimazza.academyapp.ui.reader
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import io.github.fatimazza.academyapp.R
 import io.github.fatimazza.academyapp.ui.reader.content.ModuleContentFragment
 import io.github.fatimazza.academyapp.ui.reader.list.ModuleListFragment
@@ -13,10 +14,18 @@ class CourseReaderActivity : AppCompatActivity(), CourseReaderCallback {
         const val EXTRA_COURSE_ID = "extra_course_id"
     }
 
+    private lateinit var courseReaderViewModel: CourseReaderViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_course_reader)
+
+        initViewModel()
         getIntentExtra()
+    }
+
+    private fun initViewModel() {
+        courseReaderViewModel = ViewModelProviders.of(this).get(CourseReaderViewModel::class.java)
     }
 
     private fun getIntentExtra() {
