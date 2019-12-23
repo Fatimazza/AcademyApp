@@ -14,6 +14,10 @@ import kotlinx.android.synthetic.main.fragment_module_content.*
 
 class ModuleContentFragment : Fragment() {
 
+    companion object {
+        val TAG = ModuleContentFragment::class.java.simpleName
+    }
+
     private val webModuleContent: WebView
         get() = web_module_content
 

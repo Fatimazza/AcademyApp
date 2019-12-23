@@ -2,7 +2,9 @@ package io.github.fatimazza.academyapp.ui.reader
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import io.github.fatimazza.academyapp.R
+import io.github.fatimazza.academyapp.ui.reader.content.ModuleContentFragment
 
 class CourseReaderActivity : AppCompatActivity(), CourseReaderCallback {
 
@@ -16,6 +18,10 @@ class CourseReaderActivity : AppCompatActivity(), CourseReaderCallback {
     }
 
     override fun moveTo(position: Int, moduleId: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val fragment: Fragment = ModuleContentFragment()
+        supportFragmentManager.beginTransaction()
+            .add(R.id.frame_container, fragment, ModuleContentFragment.TAG)
+            .addToBackStack(null)
+            .commit()
     }
 }
