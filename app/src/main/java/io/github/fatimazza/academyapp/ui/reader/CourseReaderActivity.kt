@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import io.github.fatimazza.academyapp.R
 import io.github.fatimazza.academyapp.ui.reader.content.ModuleContentFragment
+import io.github.fatimazza.academyapp.ui.reader.list.ModuleListFragment
 
 class CourseReaderActivity : AppCompatActivity(), CourseReaderCallback {
 
@@ -29,7 +30,14 @@ class CourseReaderActivity : AppCompatActivity(), CourseReaderCallback {
     }
 
     private fun populateFragment() {
-        
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        var fragment = supportFragmentManager.findFragmentByTag(ModuleListFragment.TAG)
+        if (fragment == null) {
+            fragment = ModuleListFragment()
+            fragmentTransaction.add(R.id.frame_container, fragment, ModuleListFragment.TAG)
+            fragmentTransaction.addToBackStack(null)
+        }
+        fragmentTransaction.commit()
     }
 
     override fun moveTo(position: Int, moduleId: String) {

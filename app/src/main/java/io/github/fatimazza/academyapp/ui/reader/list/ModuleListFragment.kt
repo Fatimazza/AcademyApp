@@ -22,6 +22,10 @@ import kotlinx.android.synthetic.main.fragment_module_list.*
 
 class ModuleListFragment : Fragment(), ModuleListAdapter.OnItemClickCallback {
 
+    companion object {
+        val TAG = ModuleListFragment::class.java.simpleName
+    }
+
     private val progressModuleList: ProgressBar
         get() = pb_module_list
 
