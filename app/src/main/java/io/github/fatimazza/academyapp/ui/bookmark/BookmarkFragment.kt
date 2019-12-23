@@ -7,12 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ShareCompat
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import io.github.fatimazza.academyapp.R
 import io.github.fatimazza.academyapp.data.CourseEntity
-import io.github.fatimazza.academyapp.utils.DataDummy
 import kotlinx.android.synthetic.main.fragment_bookmark.*
 
 class BookmarkFragment : Fragment(), BookmarkFragmentCallback {
@@ -20,7 +20,9 @@ class BookmarkFragment : Fragment(), BookmarkFragmentCallback {
     private val rvBookmarkedCourse: RecyclerView
         get() = rv_bookmark_list
 
-    lateinit var bookmarkAdapter: BookmarkAdapter
+    private lateinit var bookmarkAdapter: BookmarkAdapter
+
+    private lateinit var bookmarkViewModel: BookmarkViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,13 +35,18 @@ class BookmarkFragment : Fragment(), BookmarkFragmentCallback {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        initAdapter()
         setupAdapter()
         showListBookmarkedCourse()
     }
 
+    private fun initAdapter() {
+        bookmarkViewModel = ViewModelProviders.of(this).get(BookmarkViewModel::class.java)
+    }
+
     private fun setupAdapter() {
         bookmarkAdapter = BookmarkAdapter(requireActivity(), this)
-        bookmarkAdapter.setData(DataDummy.generateDummyCourses())
+        bookmarkAdapter.setData(bookmarkViewModel.getBookmarks())
     }
 
     private fun showListBookmarkedCourse() {
