@@ -1,6 +1,7 @@
 package io.github.fatimazza.academyapp.ui.reader.list
 
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,10 +15,12 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import io.github.fatimazza.academyapp.data.ModuleEntity
+import io.github.fatimazza.academyapp.ui.reader.CourseReaderActivity
+import io.github.fatimazza.academyapp.ui.reader.CourseReaderCallback
 import io.github.fatimazza.academyapp.utils.DataDummy
 import kotlinx.android.synthetic.main.fragment_module_list.*
 
-class ModuleListFragment : Fragment() {
+class ModuleListFragment : Fragment(), ModuleListAdapter.OnItemClickCallback {
 
     private val progressModuleList: ProgressBar
         get() = pb_module_list
@@ -26,6 +29,8 @@ class ModuleListFragment : Fragment() {
         get() = rv_module_list
 
     private lateinit var moduleListAdapter: ModuleListAdapter
+
+    private lateinit var courseReaderCallback: CourseReaderCallback
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,5 +56,14 @@ class ModuleListFragment : Fragment() {
 
         val dividerItemDecoration = DividerItemDecoration(rvModuleList.context, DividerItemDecoration.VERTICAL)
         rvModuleList.addItemDecoration(dividerItemDecoration)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        courseReaderCallback = context as CourseReaderActivity
+    }
+
+    override fun onItemClicked(position: Int, moduleId: String) {
+        courseReaderCallback.moveTo(position, moduleId)
     }
 }
