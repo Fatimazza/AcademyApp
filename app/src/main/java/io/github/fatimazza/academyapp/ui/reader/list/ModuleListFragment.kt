@@ -60,6 +60,8 @@ class ModuleListFragment : Fragment(), ModuleListAdapter.OnItemClickCallback {
 
         val dividerItemDecoration = DividerItemDecoration(rvModuleList.context, DividerItemDecoration.VERTICAL)
         rvModuleList.addItemDecoration(dividerItemDecoration)
+
+        moduleListAdapter.setOnItemClickCallback(this)
     }
 
     override fun onAttach(context: Context) {
