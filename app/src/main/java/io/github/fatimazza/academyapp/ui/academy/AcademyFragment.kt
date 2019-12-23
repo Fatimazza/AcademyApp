@@ -6,11 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import io.github.fatimazza.academyapp.R
-import io.github.fatimazza.academyapp.utils.DataDummy
 import kotlinx.android.synthetic.main.fragment_academy.*
 
 class AcademyFragment : Fragment() {
@@ -18,7 +18,9 @@ class AcademyFragment : Fragment() {
     private val rvCourse: RecyclerView
         get() = rv_academy_list
 
-    lateinit var academyAdapter: AcademyAdapter
+    private lateinit var academyAdapter: AcademyAdapter
+
+    private lateinit var academyViewModel: AcademyViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,13 +33,18 @@ class AcademyFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        initViewModel()
         setupAdapter()
         showListCourse()
     }
 
+    private fun initViewModel() {
+        academyViewModel = ViewModelProviders.of(this).get(AcademyViewModel::class.java)
+    }
+
     private fun setupAdapter() {
         academyAdapter = AcademyAdapter(requireActivity())
-        academyAdapter.setData(DataDummy.generateDummyCourses())
+        academyAdapter.setData(academyViewModel.getCourse())
     }
 
     private fun showListCourse() {
