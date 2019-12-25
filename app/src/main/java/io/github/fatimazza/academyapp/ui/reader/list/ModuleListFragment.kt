@@ -80,5 +80,6 @@ class ModuleListFragment : Fragment(), ModuleListAdapter.OnItemClickCallback {
 
     override fun onItemClicked(position: Int, moduleId: String) {
         courseReaderCallback.moveTo(position, moduleId)
+        viewModel.selectedModule = moduleId
     }
 }
