@@ -56,7 +56,7 @@ class ModuleListFragment : Fragment(), ModuleListAdapter.OnItemClickCallback {
     }
 
     private fun initViewModel() {
-        viewModel = ViewModelProviders.of(this).get(CourseReaderViewModel::class.java)
+        viewModel = ViewModelProviders.of(requireActivity()).get(CourseReaderViewModel::class.java)
     }
 
     private fun populateRecyclerView(modules: ArrayList<ModuleEntity>) {
@@ -80,6 +80,6 @@ class ModuleListFragment : Fragment(), ModuleListAdapter.OnItemClickCallback {
 
     override fun onItemClicked(position: Int, moduleId: String) {
         courseReaderCallback.moveTo(position, moduleId)
-        viewModel.selectedModule = moduleId
+        viewModel.moduleId = moduleId
     }
 }
