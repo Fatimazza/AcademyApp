@@ -12,7 +12,7 @@ class CourseReaderViewModel : ViewModel() {
 
     var moduleId: String = ""
 
-    fun getModule(): List<ModuleEntity> {
+    fun getModule(): ArrayList<ModuleEntity> {
         return DataDummy.generateDummyModules(courseId)
     }
 

@@ -52,7 +52,7 @@ class ModuleListFragment : Fragment(), ModuleListAdapter.OnItemClickCallback {
         super.onActivityCreated(savedInstanceState)
         initViewModel()
         moduleListAdapter = ModuleListAdapter()
-        populateRecyclerView(DataDummy.generateDummyModules("a14"))
+        populateRecyclerView(viewModel.getModule())
     }
 
     private fun initViewModel() {
