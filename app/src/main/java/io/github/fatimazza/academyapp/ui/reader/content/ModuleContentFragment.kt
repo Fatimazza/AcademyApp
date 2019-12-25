@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import io.github.fatimazza.academyapp.R
 import io.github.fatimazza.academyapp.data.ContentEntity
+import io.github.fatimazza.academyapp.data.ModuleEntity
 import io.github.fatimazza.academyapp.ui.reader.CourseReaderViewModel
 import kotlinx.android.synthetic.main.fragment_module_content.*
 
@@ -40,16 +41,19 @@ class ModuleContentFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         initViewModel()
-        val entity =
-            ContentEntity("<h3 class=\\\"fr-text-bordered\\\">Contoh Content</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>")
-        populateWebView(entity)
+        // we can access this directly, without setting courseId & moduleId because:
+        // courseId already set in Course Reader Activity
+        // moduleId already set in Module List Fragment
+        // using Shared View Model from requireActivity() instead of new VM (using this)
+        val moduleEntity = viewModel.getSelectedModule()
+        populateWebView(moduleEntity)
     }
 
     private fun initViewModel() {
         viewModel = ViewModelProviders.of(requireActivity()).get(CourseReaderViewModel::class.java)
     }
 
-    private fun populateWebView(content: ContentEntity) {
-        webModuleContent.loadData(content.content,"text/html", "UTF-8")
+    private fun populateWebView(content: ModuleEntity?) {
+        webModuleContent.loadData(content?.contentEntity?.content,"text/html", "UTF-8")
     }
 }
