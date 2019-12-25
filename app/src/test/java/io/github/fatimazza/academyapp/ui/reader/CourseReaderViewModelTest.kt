@@ -35,5 +35,17 @@ class CourseReaderViewModelTest {
 
     @Test
     fun getSelectedModule() {
+        viewModel.moduleId = moduleId
+        // make sure Module data not null
+        val moduleEntity = viewModel.getSelectedModule()
+        assertNotNull(moduleEntity)
+        // make sure Content data not null
+        val contentEntity = moduleEntity?.contentEntity
+        assertNotNull(contentEntity)
+        // make sure value of Content not null
+        val content = contentEntity?.content
+        assertNotNull(content)
+        // make sure value of Content is as expected
+        assertEquals(content, dummyContentEntities.content)
     }
 }
