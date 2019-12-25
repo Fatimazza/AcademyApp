@@ -27,6 +27,16 @@ class DetailCourseViewModelTest {
 
     @Test
     fun getCourse() {
+        viewModel.courseId = dummyCourse.courseId
+        val courseEntity = viewModel.getCourse()
+        // make sure Course data not null
+        assertNotNull(courseEntity)
+        // make sure Course data is as expected
+        assertEquals(dummyCourse.courseId, courseEntity.courseId)
+        assertEquals(dummyCourse.deadline, courseEntity.deadline)
+        assertEquals(dummyCourse.description, courseEntity.description)
+        assertEquals(dummyCourse.imagePath, courseEntity.imagePath)
+        assertEquals(dummyCourse.title, courseEntity.title)
     }
 
     @Test
