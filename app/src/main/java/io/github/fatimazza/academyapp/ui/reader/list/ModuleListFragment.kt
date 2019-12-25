@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 
 import io.github.fatimazza.academyapp.R
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import io.github.fatimazza.academyapp.data.ModuleEntity
 import io.github.fatimazza.academyapp.ui.reader.CourseReaderActivity
 import io.github.fatimazza.academyapp.ui.reader.CourseReaderCallback
+import io.github.fatimazza.academyapp.ui.reader.CourseReaderViewModel
 import io.github.fatimazza.academyapp.utils.DataDummy
 import kotlinx.android.synthetic.main.fragment_module_list.*
 
@@ -36,6 +38,8 @@ class ModuleListFragment : Fragment(), ModuleListAdapter.OnItemClickCallback {
 
     private lateinit var courseReaderCallback: CourseReaderCallback
 
+    private lateinit var viewModel: CourseReaderViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,8 +50,13 @@ class ModuleListFragment : Fragment(), ModuleListAdapter.OnItemClickCallback {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        initViewModel()
         moduleListAdapter = ModuleListAdapter()
         populateRecyclerView(DataDummy.generateDummyModules("a14"))
+    }
+
+    private fun initViewModel() {
+        viewModel = ViewModelProviders.of(this).get(CourseReaderViewModel::class.java)
     }
 
     private fun populateRecyclerView(modules: ArrayList<ModuleEntity>) {
