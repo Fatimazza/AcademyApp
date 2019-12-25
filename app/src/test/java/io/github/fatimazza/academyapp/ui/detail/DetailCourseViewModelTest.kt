@@ -31,5 +31,10 @@ class DetailCourseViewModelTest {
 
     @Test
     fun getModules() {
+        val moduleEntities = viewModel.getModules()
+        // make sure Module data not null
+        assertNotNull(moduleEntities)
+        // make sure total of Module data is as expected
+        assertEquals(7, moduleEntities.size)
     }
 }
