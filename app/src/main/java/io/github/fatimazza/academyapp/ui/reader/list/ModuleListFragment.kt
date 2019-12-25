@@ -19,7 +19,6 @@ import io.github.fatimazza.academyapp.data.ModuleEntity
 import io.github.fatimazza.academyapp.ui.reader.CourseReaderActivity
 import io.github.fatimazza.academyapp.ui.reader.CourseReaderCallback
 import io.github.fatimazza.academyapp.ui.reader.CourseReaderViewModel
-import io.github.fatimazza.academyapp.utils.DataDummy
 import kotlinx.android.synthetic.main.fragment_module_list.*
 
 class ModuleListFragment : Fragment(), ModuleListAdapter.OnItemClickCallback {
@@ -52,7 +51,7 @@ class ModuleListFragment : Fragment(), ModuleListAdapter.OnItemClickCallback {
         super.onActivityCreated(savedInstanceState)
         initViewModel()
         moduleListAdapter = ModuleListAdapter()
-        populateRecyclerView(viewModel.getModule())
+        populateRecyclerView(viewModel.getModules())
     }
 
     private fun initViewModel() {
